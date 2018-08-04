@@ -14,6 +14,8 @@
 		7708FA862115491D00DC399F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7708FA842115491D00DC399F /* LaunchScreen.storyboard */; };
 		7708FA912115491D00DC399F /* XXCellAndDeleteActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7708FA902115491D00DC399F /* XXCellAndDeleteActionTests.swift */; };
 		7708FA9C2115491D00DC399F /* XXCellAndDeleteActionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7708FA9B2115491D00DC399F /* XXCellAndDeleteActionUITests.swift */; };
+		7708FAAA21154C2B00DC399F /* XXTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7708FAA921154C2B00DC399F /* XXTableViewController.swift */; };
+		7708FAAC21154C5200DC399F /* XXCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7708FAAB21154C5200DC399F /* XXCustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		7708FA972115491D00DC399F /* XXCellAndDeleteActionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XXCellAndDeleteActionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7708FA9B2115491D00DC399F /* XXCellAndDeleteActionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XXCellAndDeleteActionUITests.swift; sourceTree = "<group>"; };
 		7708FA9D2115491D00DC399F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7708FAA921154C2B00DC399F /* XXTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XXTableViewController.swift; sourceTree = "<group>"; };
+		7708FAAB21154C5200DC399F /* XXCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XXCustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				7708FA822115491D00DC399F /* Assets.xcassets */,
 				7708FA842115491D00DC399F /* LaunchScreen.storyboard */,
 				7708FA872115491D00DC399F /* Info.plist */,
+				7708FAA921154C2B00DC399F /* XXTableViewController.swift */,
+				7708FAAB21154C5200DC399F /* XXCustomCell.swift */,
 			);
 			path = XXCellAndDeleteAction;
 			sourceTree = "<group>";
@@ -256,6 +262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7708FAAC21154C5200DC399F /* XXCustomCell.swift in Sources */,
+				7708FAAA21154C2B00DC399F /* XXTableViewController.swift in Sources */,
 				7708FA7E2115490E00DC399F /* ViewController.swift in Sources */,
 				7708FA7C2115490E00DC399F /* AppDelegate.swift in Sources */,
 			);
@@ -431,6 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MHDH5B76KE;
 				INFOPLIST_FILE = XXCellAndDeleteAction/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -448,6 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MHDH5B76KE;
 				INFOPLIST_FILE = XXCellAndDeleteAction/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
