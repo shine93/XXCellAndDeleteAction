@@ -44,40 +44,61 @@ extension XXTableViewController {
         return true
      }
     
+    @available(iOS 11.0, *)
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: nil) { (action, view, completeHandler) in
+            //delete action
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let kCellActionWidth: CGFloat = 100
-        let kCellHeight: CGFloat = 176
         let whitespace = whitespaceString(width: kCellActionWidth)
         let deleAction = UITableViewRowAction(style: .default, title: whitespace) { (action, indexPath) in
             //delete callback
         }
         
+        deleAction.backgroundColor = UIColor(patternImage: getDeleteIcon())
+        
+        return [deleAction]
+    }
+    
+    func getDeleteIcon() -> UIImage {
+        let kCellActionWidth: CGFloat = 100
+        let kCellHeight: CGFloat = 176
         let kActionImageSize: CGFloat = 18
         let kImageBackViewSize: CGFloat = 44
         let view = UIView(frame: CGRect(x: 0, y: 0, width: kCellActionWidth, height: kCellHeight))
         
-        let deleteBackView = UIView(frame: CGRect(x: (kCellActionWidth - kImageBackViewSize) / 2,
+        var deletBackViewX: CGFloat = 0
+        var imageViewX: CGFloat = 0
+        if #available(iOS 11.0, *) {
+            deletBackViewX = kActionImageSize / 2
+            imageViewX = kActionImageSize / 2 + (kImageBackViewSize - kActionImageSize) / 2
+        } else {
+            deletBackViewX = (kCellActionWidth - kImageBackViewSize) / 2
+            imageViewX = (kCellActionWidth - kActionImageSize) / 2
+        }
+        
+        let deleteBackView = UIView(frame: CGRect(x: deletBackViewX,
                                                   y: (kCellHeight - kImageBackViewSize) / 2,
                                                   width: kImageBackViewSize,
                                                   height: kImageBackViewSize))
-   
+        
         deleteBackView.layer.cornerRadius = kImageBackViewSize / 2
         deleteBackView.clipsToBounds = true
         deleteBackView.backgroundColor = UIColor.white
-        let imageView = UIImageView(frame: CGRect(x: (kCellActionWidth - kActionImageSize) / 2,
+        let imageView = UIImageView(frame: CGRect(x: imageViewX,
                                                   y: (kCellHeight - kActionImageSize) / 2,
                                                   width: kActionImageSize,
                                                   height: kActionImageSize))
-        imageView.image = UIImage(named: "deleat")
+        imageView.image = UIImage(named: "delete")
         view.backgroundColor = UIColor(red: 224.0/255.0, green: 227.0/255.0, blue: 232.0/255.0, alpha: 1.0)
         view.addSubview(deleteBackView)
         view.addSubview(imageView)
-        let image = view.image()
-        
-        deleAction.backgroundColor = UIColor(patternImage: image)
-        
-        return [deleAction]
+        return view.image()
     }
     
     fileprivate func whitespaceString(font: UIFont = UIFont.systemFont(ofSize: 15), width: CGFloat) -> String {
@@ -88,6 +109,19 @@ extension XXTableViewController {
             mutable.append(" ")
         }
         return mutable as String
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if #available(iOS 11.0, *) {
+            for view in tableView.subviews {
+                if view.isKind(of: NSClassFromString("UISwipeActionPullView")!) {
+                    view.backgroundColor = UIColor(red: 224.0/255.0, green: 227.0/255.0, blue: 232.0/255.0, alpha: 1.0)
+                }
+            }
+        }
+        
     }
 }
 
